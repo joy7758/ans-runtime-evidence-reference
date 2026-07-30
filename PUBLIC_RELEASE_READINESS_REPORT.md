@@ -2,24 +2,29 @@
 
 Date: 2026-07-30
 
-Status: `READY_FOR_HUMAN_DCO_NOT_COMMITTED_NOT_PUBLISHED`
+Status: `PUBLIC_BASE_VERIFIED_ISSUE_FINAL_DRAFT_HUMAN_COMMIT_REQUIRED`
 
 ## Release Candidate
 
 ```text
 PROJECT=ANS Runtime Execution Evidence Reference
 BRANCH=main
-REMOTE_CONFIGURED=false
-FINAL_COMMIT_CREATED=false
-HUMAN_DCO_SIGNOFF_PRESENT=false
-PUBLIC_REPOSITORY_CREATED=false
-PUSH_EXECUTED=false
+REMOTE_CONFIGURED=true
+PUBLIC_BASE_COMMIT=0188da00cba8cc43c1257cd7e6126974a92a1ef1
+PUBLIC_BASE_COMMIT_CREATED=true
+PUBLIC_BASE_DCO_SIGNOFF_PRESENT=true
+PUBLIC_REPOSITORY_CREATED=true
+PUBLIC_BASE_PUSHED=true
+FINAL_DRAFT_COMMIT_CREATED=false
 OFFICIAL_ANS_ISSUE_CREATED=false
 OFFICIAL_ANS_PULL_REQUEST_CREATED=false
 ```
 
-The candidate is a local, independently initialized Git repository. No source
-repository `.git` directory or history was copied.
+The independent repository is publicly accessible at
+<https://github.com/joy7758/ans-runtime-evidence-reference>. The public base
+commit is on `main`, carries the human DCO trailer, and was created and pushed
+by the human contributor. The current Issue-finalization changes remain local
+and uncommitted.
 
 ## Scope Inventory
 
@@ -112,15 +117,20 @@ OPERATION_REFERENCE_MISMATCH_REJECTED=PASS
 
 ## Link Review
 
-- All active relative Markdown links resolve inside the candidate repository.
-- The active upstream ANS repository link returned HTTP 200 during the check.
-- The Issue draft contains `{{PUBLIC_COMMIT_SHA}}` inside code-form,
-  pre-publication URLs. They are deliberately not active Markdown links and
-  must be replaced after a public, human-signed commit exists.
+- The Issue draft references the repository plus README, Schema, synthetic
+  example, offline verifier, tests, technical proposal, and implementation
+  report.
+- All seven artifact links are pinned to public commit
+  `0188da00cba8cc43c1257cd7e6126974a92a1ef1`.
+- All eight repository/artifact URLs returned HTTP 200 without authenticated
+  GitHub headers.
+- No public-commit placeholder, private local path, `file://`, `localhost`, or
+  private worktree reference remains in the Issue draft.
 
 ```text
 ACTIVE_LINK_CHECK=PASS
-ISSUE_DRAFT_IMMUTABLE_LINKS_FINAL=false
+ANONYMOUS_PUBLIC_LINK_CHECK=PASS
+ISSUE_DRAFT_IMMUTABLE_LINKS_FINAL=true
 ISSUE_DRAFT_POSTING_AUTHORIZED=false
 ```
 
@@ -174,25 +184,28 @@ Remaining limitations:
 
 ## Human Stop Gate
 
-The candidate is ready for human review and DCO, not publication.
-
-Codex and Qwen did not create the final commit and did not add a
-`Signed-off-by:` trailer. After reviewing the staged diff and accepting the
-Developer Certificate of Origin, the human contributor may run:
+The public base package is available, but the Issue-finalization diff still
+requires a new human DCO commit. Codex did not create that commit and did not
+add a `Signed-off-by:` trailer. After reviewing the staged diff and accepting
+the Developer Certificate of Origin, the human contributor may run:
 
 ```bash
-git commit -s -m "Publish ANS runtime execution evidence reference implementation"
+git commit -s -m "Finalize ANS upstream discussion draft"
 ```
 
-Repository creation, remote configuration, push, official ANS Issue creation,
-and official ANS Pull Request creation remain separate, unauthorized actions.
+Pushing that commit, creating the official ANS Issue, and creating any official
+ANS Pull Request remain separate actions. This round authorizes none of them.
 
 ## Final Result
 
 ```text
 PUBLIC_RELEASE_PACKAGE_COMPLETE=true
 PUBLIC_RELEASE_CHECKS_PASS=true
-READY_FOR_HUMAN_DCO=true
-FINAL_COMMIT_CREATED=false
-PUBLICATION_EXECUTED=false
+PUBLIC_BASE_REPOSITORY_ACCESSIBLE=true
+PUBLIC_BASE_DCO_SIGNOFF_PRESENT=true
+ISSUE_DRAFT_CONTENT_FINAL=true
+READY_FOR_FINAL_DRAFT_HUMAN_DCO=true
+FINAL_DRAFT_COMMIT_CREATED=false
+OFFICIAL_ISSUE_CREATED=false
+UPSTREAM_PULL_REQUEST_CREATED=false
 ```

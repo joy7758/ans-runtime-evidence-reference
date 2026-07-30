@@ -1,6 +1,6 @@
 # ANS Reference Publication Checklist
 
-Status: `HUMAN_COMMIT_AND_PUBLICATION_REQUIRED`
+Status: `PUBLIC_REFERENCE_VERIFIED_ISSUE_FINAL_DRAFT_HUMAN_COMMIT_REQUIRED`
 
 This checklist covers the independent reference repository only. It does not
 authorize an official ANS Issue or Pull Request.
@@ -34,7 +34,7 @@ authorize an official ANS Issue or Pull Request.
 - [x] The same LICENSE is included without modification.
 - [x] README identifies the source repository and exact source commits.
 - [x] No upstream ANS source code is copied.
-- [ ] Human confirms contribution rights before signing the first commit.
+- [x] Human confirmed contribution rights and signed the public base commit.
 
 ## Content and Security
 
@@ -63,8 +63,8 @@ authorize an official ANS Issue or Pull Request.
 - [x] `pytest` passes: `8 passed`.
 - [x] `ruff check .` passes.
 - [x] `pre-commit run --all-files` passes.
-- [x] Markdown links resolve locally or are explicitly marked as pre-publication
-  placeholders.
+- [x] All eight Issue-draft repository and artifact links returned HTTP 200
+  without GitHub authentication.
 - [x] Secret, private-path, example-data, and overclaim scans pass.
 
 The final results are recorded in `PUBLIC_RELEASE_READINESS_REPORT.md`.
@@ -72,16 +72,18 @@ The final results are recorded in `PUBLIC_RELEASE_READINESS_REPORT.md`.
 ## Human DCO Gate
 
 ```text
+PUBLIC_BASE_COMMIT=0188da00cba8cc43c1257cd7e6126974a92a1ef1
+PUBLIC_BASE_DCO_SIGNOFF_PRESENT=true
 AI_DCO_SIGNOFF_PERFORMED=false
 HUMAN_DCO_SIGNOFF_REQUIRED=true
-FINAL_COMMIT_CREATED=false
+FINAL_DRAFT_COMMIT_CREATED=false
 ```
 
-Codex and Qwen must not add `Signed-off-by:`. After reviewing the staged diff
-and accepting the Developer Certificate of Origin, Bin Zhang may run:
+Codex must not add `Signed-off-by:`. After reviewing the staged Issue-finalization
+diff and accepting the Developer Certificate of Origin, Bin Zhang may run:
 
 ```bash
-git commit -s -m "Publish ANS runtime execution evidence reference implementation"
+git commit -s -m "Finalize ANS upstream discussion draft"
 ```
 
 Before that command, verify the local identity:
@@ -103,14 +105,14 @@ joy7759@gmail.com
 ## External Actions
 
 ```text
-PUBLIC_GITHUB_REPOSITORY_CREATED=false
-REFERENCE_REPOSITORY_PUSHED=false
+PUBLIC_GITHUB_REPOSITORY_CREATED=true
+REFERENCE_REPOSITORY_PUSHED=true
 OFFICIAL_ANS_ISSUE_CREATED=false
 OFFICIAL_ANS_PULL_REQUEST_CREATED=false
 ANS_MAINTAINER_REVIEW_OBSERVED=false
 ```
 
-After the human-signed commit, repository creation, public visibility, remote
-configuration, and push require a separate explicit instruction. Posting the
-Issue draft requires another explicit confirmation after all immutable links
-resolve anonymously.
+The public base repository and immutable artifact links are verified. The
+Issue-finalization commit and any push remain human actions. Posting the Issue
+requires explicit `CONFIRM_ANS_EXTERNAL_SUBMISSION`; a later Pull Request
+requires maintainer scope acceptance and separate authorization.

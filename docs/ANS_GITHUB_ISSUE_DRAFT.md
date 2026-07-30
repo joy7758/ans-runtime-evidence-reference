@@ -1,10 +1,10 @@
 # Proposal: Linking Agent Identity with Runtime Execution Evidence
 
-Draft status: `DO_NOT_POST_HUMAN_CONFIRMATION_REQUIRED`
+Draft status: `FINAL_REVIEW_READY_NOT_SUBMITTED`
 
-Before posting, replace `{{PUBLIC_COMMIT_SHA}}` with an immutable commit in the
-public reference repository and re-check every link. This round does not create
-an official ANS Issue or Pull Request.
+All reference links below are pinned to the public, human-DCO-signed commit
+`0188da00cba8cc43c1257cd7e6126974a92a1ef1`. This draft has not been posted as
+an official ANS Issue, and no Pull Request has been created.
 
 ## Summary
 
@@ -22,10 +22,10 @@ whether maintainers consider an external evidence reference to be within
 discussion scope. Only if maintainers accept that scope would a later Pull
 Request be prepared.
 
-The proposal does not ask ANS to store complete runtime logs or become an
-execution-evidence system. For a first discussion, it suggests an independent
-companion profile that references an existing ANS identity event and keeps the
-evidence body outside ANS.
+The proposal does not ask ANS to store complete runtime logs, become an
+execution-evidence system, or become an execution fact center. For a first
+discussion, it suggests an independent companion profile that references an
+existing ANS identity event and keeps the evidence body outside ANS.
 
 ## Motivation
 
@@ -123,6 +123,8 @@ retention, audit, and receipt semantics would need to be defined.
 
 ### C. Publish an interoperability companion profile
 
+`OPTION_C_EXTERNAL_INTEROPERABILITY_COMPANION_PROFILE`
+
 Existing ANS event bytes, signatures, receipts, status behavior, and log load
 remain unchanged. The profile can support offline composition when the ANS
 receipt, external evidence, digest rules, and verifier inputs are available.
@@ -135,23 +137,21 @@ maintainer feedback.
 
 An independent, development-stage reference package is prepared at:
 
-- Repository:
-  `https://github.com/joy7758/ans-runtime-evidence-reference`
-- Schema:
-  `https://github.com/joy7758/ans-runtime-evidence-reference/blob/{{PUBLIC_COMMIT_SHA}}/schema/ans-evidence-extension.schema.json`
-- Synthetic example:
-  `https://github.com/joy7758/ans-runtime-evidence-reference/blob/{{PUBLIC_COMMIT_SHA}}/examples/agent_identity_with_execution_evidence.json`
-- Offline verifier:
-  `https://github.com/joy7758/ans-runtime-evidence-reference/blob/{{PUBLIC_COMMIT_SHA}}/verify_extension.py`
-- Tests:
-  `https://github.com/joy7758/ans-runtime-evidence-reference/blob/{{PUBLIC_COMMIT_SHA}}/tests/test_ans_extension.py`
-- Proposal:
-  `https://github.com/joy7758/ans-runtime-evidence-reference/blob/{{PUBLIC_COMMIT_SHA}}/docs/ANS_RUNTIME_EVIDENCE_PROPOSAL.md`
+- [Repository](https://github.com/joy7758/ans-runtime-evidence-reference)
+- [README](https://github.com/joy7758/ans-runtime-evidence-reference/blob/0188da00cba8cc43c1257cd7e6126974a92a1ef1/README.md)
+- [Schema](https://github.com/joy7758/ans-runtime-evidence-reference/blob/0188da00cba8cc43c1257cd7e6126974a92a1ef1/schema/ans-evidence-extension.schema.json)
+- [Synthetic example](https://github.com/joy7758/ans-runtime-evidence-reference/blob/0188da00cba8cc43c1257cd7e6126974a92a1ef1/examples/agent_identity_with_execution_evidence.json)
+- [Offline verifier](https://github.com/joy7758/ans-runtime-evidence-reference/blob/0188da00cba8cc43c1257cd7e6126974a92a1ef1/verify_extension.py)
+- [Tests](https://github.com/joy7758/ans-runtime-evidence-reference/blob/0188da00cba8cc43c1257cd7e6126974a92a1ef1/tests/test_ans_extension.py)
+- [Technical proposal](https://github.com/joy7758/ans-runtime-evidence-reference/blob/0188da00cba8cc43c1257cd7e6126974a92a1ef1/docs/ANS_RUNTIME_EVIDENCE_PROPOSAL.md)
+- [Implementation report](https://github.com/joy7758/ans-runtime-evidence-reference/blob/0188da00cba8cc43c1257cd7e6126974a92a1ef1/IMPLEMENTATION_REPORT.md)
 
 The verifier checks the external profile only. It does not resolve `ansName`,
 query ANS, or cryptographically verify SCITT receipts; those capabilities must
 be supplied by an ANS verifier. The local JSON canonicalization profile is also
 not a claim of RFC 8785 conformance.
+
+Option C does not modify the existing ANS wire contract.
 
 ## Non-goals
 
@@ -180,8 +180,6 @@ This proposal does not:
 
 ## AI Assistance Disclosure
 
-The reference implementation and submission materials were prepared with
-assistance from OpenAI Codex and Alibaba Cloud Qwen, and reviewed by Bin Zhang,
-who remains responsible for the technical content and licensing.
+The reference implementation and submission materials were prepared with assistance from OpenAI Codex and reviewed by Bin Zhang, who remains responsible for the technical content and licensing.
 
 No maintainer opinion, acceptance, or endorsement is implied by this draft.
