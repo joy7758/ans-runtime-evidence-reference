@@ -1,0 +1,69 @@
+{
+  "schema_version": "0.1.0",
+  "agent_identity_reference": {
+    "ansId": "0198f000-0000-7000-8000-000000000001",
+    "ansName": "ans://v1.0.0.build-agent.example.test",
+    "identity_provider": "https://ra.example.test",
+    "eventLogId": "0198f000-0000-7000-8000-000000000002",
+    "eventType": "AGENT_REGISTERED",
+    "event_timestamp": "2026-07-30T07:59:55Z",
+    "lifecycle_status": "ACTIVE",
+    "scitt_receipt_uri": "https://tl.example.test/v1/agents/0198f000-0000-7000-8000-000000000001/receipt",
+    "scitt_receipt_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+  },
+  "execution_evidence_reference": {
+    "execution_evidence_id": "urn:example:execution-evidence:build-20260730-001",
+    "ansId": "0198f000-0000-7000-8000-000000000001",
+    "evidence_object_id": "urn:example:evidence-object:build-20260730-001",
+    "evidence_uri": "https://evidence.example.test/objects/build-20260730-001.json",
+    "digest_algorithm": "sha-256",
+    "canonicalization": "reference-json-v0.1",
+    "evidence_sha256": "sha256:d172b8865fb46092c6958ffc0d00c2e8e776f4b59b93065025ed6bd1a04c8581",
+    "availability_status": "AVAILABLE",
+    "generated_at": "2026-07-30T08:00:00Z"
+  },
+  "evidence_object": {
+    "object_id": "urn:example:evidence-object:build-20260730-001",
+    "execution_evidence_id": "urn:example:execution-evidence:build-20260730-001",
+    "ansId": "0198f000-0000-7000-8000-000000000001",
+    "timestamp": "2026-07-30T08:00:00Z",
+    "task": {
+      "task_id": "task-ans-extension-validation-001",
+      "description": "Validate the independent ANS runtime evidence companion profile."
+    },
+    "tool_call": {
+      "tool_name": "pytest",
+      "arguments": [
+        "-q",
+        "tests/test_ans_extension.py"
+      ],
+      "status": "COMPLETED"
+    },
+    "result": {
+      "status": "SUCCESS",
+      "summary": "The synthetic companion-profile checks completed successfully.",
+      "artifact_refs": [
+        "urn:example:artifact:pytest-report-20260730-001"
+      ]
+    }
+  },
+  "verification_result": {
+    "verification_result_id": "urn:example:verification:ans-extension-20260730-001",
+    "verifier_id": "urn:example:verifier:independent-reviewer-001",
+    "timestamp": "2026-07-30T08:01:00Z",
+    "verification_status": "PASS",
+    "checks": {
+      "identity_linkage": "PASS",
+      "evidence_present": "PASS",
+      "evidence_hash": "PASS"
+    },
+    "failure_reasons": []
+  },
+  "audit_pointer": {
+    "audit_bundle_id": "urn:example:audit-bundle:ans-extension-20260730-001",
+    "verification_result_id": "urn:example:verification:ans-extension-20260730-001",
+    "audit_uri": "urn:example:audit-log:synthetic-entry-20260730-001",
+    "audit_sha256": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+    "recorded_at": "2026-07-30T08:01:05Z"
+  }
+}
