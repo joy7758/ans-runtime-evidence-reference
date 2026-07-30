@@ -1,7 +1,9 @@
 # NIST Issue #1 Comment Preparation Checklist
 
 ```text
-STATUS=LOCAL_PUBLIC_CANDIDATE_PREPARED_NOT_PUBLISHED
+STATUS=PUBLIC_BASELINE_VERIFIED_COMMENT_FINALIZED_AWAITING_HUMAN_DCO_COMMIT
+PUBLIC_REPOSITORY_ACCESSIBLE=true
+PUBLIC_IMPLEMENTATION_COMMIT=38db7676d481454386f31435fd7845718f9ae358
 OFFICIAL_NIST_COMMENT_CREATED=false
 OFFICIAL_NIST_ISSUE_CREATED=false
 NIST_PR_CREATED=false
@@ -20,10 +22,13 @@ EMAIL_SENT=false
 
 ## Public reference
 
-- [ ] Human DCO commit exists.
-- [ ] Public repository exists.
-- [ ] `{{PUBLIC_COMMIT_SHA}}` is replaced with the immutable public commit.
-- [ ] Every commit-bound link is anonymously accessible.
+- [x] Human DCO implementation commit exists and contains the required
+  `Signed-off-by` trailer.
+- [x] Public repository exists on `main`.
+- [x] All six `{{PUBLIC_COMMIT_SHA}}` placeholders are replaced with the
+  immutable implementation commit.
+- [x] The repository and six commit-bound links are anonymously accessible
+  with HTTP 200.
 - [ ] The final comment is reviewed by Bin Zhang.
 
 ## Quality and safety
@@ -42,6 +47,7 @@ EMAIL_SENT=false
 
 ## Human gate
 
-This checklist does not authorize a Git commit, repository creation, push, NIST
-comment, Issue, pull request, or email. The user must perform the DCO commit and
-public repository creation, then separately confirm the exact external text.
+This checklist does not authorize a Git commit, push, NIST comment, Issue, pull
+request, or email. The user must inspect and perform the final DCO commit, push
+that documentation commit, and then separately confirm the exact external
+text.

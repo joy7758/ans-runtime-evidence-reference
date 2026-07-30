@@ -9,16 +9,21 @@ LICENSE_CHECK=PASS
 TECHNICAL_VALIDATION=PASS
 SAFETY_SCAN=PASS
 OVERCLAIM_SCAN=PASS
-PUBLIC_COMMIT_CREATED=false
-PUBLIC_REPOSITORY_CREATED=false
-PUSH_PERFORMED=false
+PUBLIC_REPOSITORY_ACCESSIBLE=true
+PUBLIC_REPOSITORY_URL=https://github.com/joy7758/nist-runtime-evidence-probe-reference
+PUBLIC_IMPLEMENTATION_COMMIT=38db7676d481454386f31435fd7845718f9ae358
+PUBLIC_IMPLEMENTATION_DCO_SIGNOFF_PRESENT=true
+PUBLIC_REPOSITORY_CREATED=true
+INITIAL_PUBLIC_PUSH_PERFORMED_BY_HUMAN=true
+THIS_ROUND_PUSH_PERFORMED=false
 HUMAN_DCO_COMMIT_REQUIRED=true
-PUBLIC_RELEASE_READY=READY_FOR_HUMAN_DCO_COMMIT_NOT_PUBLISHED
+PUBLIC_RELEASE_READY=PUBLIC_BASELINE_VERIFIED_COMMENT_FINALIZED_AWAITING_HUMAN_DCO_COMMIT
 ```
 
-This result authorizes no external action. It means only that the local
-candidate passed the checks recorded below and is ready for the human owner to
-inspect and commit.
+This result authorizes no NIST action. It means that the human-signed initial
+implementation commit is publicly accessible and that the local comment
+finalization passed the checks below. The final documentation commit and push
+remain human actions.
 
 ## License and ownership
 
@@ -93,25 +98,28 @@ The overclaim search found only negated statements and `false` status fields.
 
 ```text
 ISSUE_1_DIFFERENTIATION_COMPLETE=true
-ISSUE_1_COMMENT_WORD_COUNT=472
-PUBLIC_COMMIT_PLACEHOLDER_COUNT=6
-PLACEHOLDER_REPLACEMENT_COMPLETE=false
+ISSUE_1_COMMENT_WORD_COUNT=500
+PUBLIC_COMMIT_PLACEHOLDER_COUNT=0
+PLACEHOLDER_REPLACEMENT_COMPLETE=true
+PUBLIC_LINK_VALIDATION=PASS_7_OF_7_HTTP_200
+FINAL_QWEN_REVIEW=RECOMMENDED
+FINAL_QWEN_MUST_FIX_REMAINING=0
 HUMAN_FINAL_TEXT_CONFIRMATION=false
 OFFICIAL_NIST_COMMENT_CREATED=false
 ```
 
 Before any NIST comment, the human owner must:
 
-1. inspect and create the DCO commit;
-2. create and push the public repository;
-3. replace all six placeholders with the immutable public commit;
-4. recheck every public link anonymously; and
-5. separately confirm the exact final comment text.
+1. inspect and create the final DCO documentation commit;
+2. push that commit to public `main`;
+3. verify the updated public comment draft;
+4. separately confirm the exact final comment text; and
+5. only then authorize any NIST comment as a distinct external action.
 
 ## Stop state
 
 ```text
-FILES_STAGED=EXPLICIT_23_FILES
+FILES_STAGED=EXPLICIT_3_FILES
 HUMAN_COMMIT_REQUIRED=true
 OFFICIAL_NIST_ISSUE_CREATED=false
 NIST_PR_CREATED=false
