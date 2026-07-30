@@ -1,0 +1,21 @@
+{
+  "evidence_version": "0.1.0",
+  "probe_id": "NIST-PROBE-CASE-004",
+  "test_case_id": "CASE-004",
+  "nonce": "nonce-case-004-success",
+  "agent_id": "agent.synthetic.research-004",
+  "trace_id": "trace-case-004",
+  "authorization_reference": "authz-case-004",
+  "tool_invocations": [
+    {
+      "sequence": 1,
+      "tool": "records.read",
+      "authorization_reference": "authz-case-004"
+    }
+  ],
+  "outcome": {
+    "status": "SUCCESS",
+    "result_digest": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+  },
+  "recorded_at": "2026-07-30T09:30:03Z"
+}

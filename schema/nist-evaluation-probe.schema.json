@@ -1,0 +1,271 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:nist-style-runtime-evidence-probe-reference:schema:0.1",
+  "$comment": "Modified from source commit e82a8aca2b324b2f65c7f1a08acb2beab8ac79a3 for this standalone reference package.",
+  "title": "NIST-style Runtime Execution Evidence Probe Reference",
+  "description": "Development-stage independent reference for a read-only execution-evidence probe. This is not an official NIST schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "probe_id",
+    "agent_id",
+    "test_case",
+    "expected_behavior",
+    "observed_behavior",
+    "evidence_reference",
+    "verification_result"
+  ],
+  "properties": {
+    "probe_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{2,127}$"
+    },
+    "agent_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{2,127}$"
+    },
+    "test_case": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "case_id",
+        "title",
+        "description",
+        "dimensions",
+        "nonce"
+      ],
+      "properties": {
+        "case_id": {
+          "type": "string",
+          "pattern": "^CASE-[0-9]{3}$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "dimensions": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "Identity",
+              "Authorization",
+              "Tool Invocation",
+              "Execution Trace",
+              "Outcome",
+              "Integrity",
+              "Auditability"
+            ]
+          }
+        },
+        "nonce": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._:-]{8,128}$"
+        }
+      }
+    },
+    "expected_behavior": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "allowed_tools",
+        "authorization_reference",
+        "outcome",
+        "evidence_required"
+      ],
+      "properties": {
+        "allowed_tools": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{1,127}$"
+          }
+        },
+        "authorization_reference": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{2,127}$"
+        },
+        "outcome": {
+          "$ref": "#/$defs/outcome"
+        },
+        "evidence_required": {
+          "const": true
+        }
+      }
+    },
+    "observed_behavior": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "actor_id",
+        "trace_id",
+        "started_at",
+        "completed_at",
+        "tool_invocations",
+        "outcome"
+      ],
+      "properties": {
+        "actor_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{2,127}$"
+        },
+        "trace_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{7,127}$"
+        },
+        "started_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "completed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "tool_invocations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/toolInvocation"
+          }
+        },
+        "outcome": {
+          "$ref": "#/$defs/outcome"
+        }
+      }
+    },
+    "evidence_reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "uri",
+        "sha256",
+        "media_type"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "PRESENT",
+            "MISSING"
+          ]
+        },
+        "uri": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "media_type": {
+          "const": "application/json"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "PRESENT"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "uri": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 500
+              },
+              "sha256": {
+                "type": "string"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "uri": {
+                "type": "null"
+              },
+              "sha256": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "verification_result": {
+      "enum": [
+        "PASS",
+        "FAIL_UNAUTHORIZED_TOOL_CALL",
+        "FAIL_MISSING_EVIDENCE",
+        "FAIL_EVIDENCE_TAMPERING",
+        "FAIL_IDENTITY_MISMATCH",
+        "FAIL_TRACE_MISMATCH",
+        "FAIL_OUTCOME_MISMATCH",
+        "ERROR_INVALID_PROBE"
+      ]
+    }
+  },
+  "$defs": {
+    "toolInvocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sequence",
+        "tool",
+        "authorization_reference"
+      ],
+      "properties": {
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "tool": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{1,127}$"
+        },
+        "authorization_reference": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "outcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "result_digest"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "SUCCESS",
+            "FAILURE",
+            "DENIED"
+          ]
+        },
+        "result_digest": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        }
+      }
+    }
+  }
+}

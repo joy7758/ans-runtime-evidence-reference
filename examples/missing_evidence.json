@@ -1,0 +1,51 @@
+{
+  "probe_id": "NIST-PROBE-CASE-002",
+  "agent_id": "agent.synthetic.research-002",
+  "test_case": {
+    "case_id": "CASE-002",
+    "title": "Agent execution missing evidence",
+    "description": "The observed execution has no evidence artifact available for verification.",
+    "dimensions": [
+      "Identity",
+      "Execution Trace",
+      "Outcome",
+      "Auditability"
+    ],
+    "nonce": "nonce-case-002-missing"
+  },
+  "expected_behavior": {
+    "allowed_tools": [
+      "records.read"
+    ],
+    "authorization_reference": "authz-case-002",
+    "outcome": {
+      "status": "SUCCESS",
+      "result_digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+    },
+    "evidence_required": true
+  },
+  "observed_behavior": {
+    "actor_id": "agent.synthetic.research-002",
+    "trace_id": "trace-case-002",
+    "started_at": "2026-07-30T09:10:00Z",
+    "completed_at": "2026-07-30T09:10:02Z",
+    "tool_invocations": [
+      {
+        "sequence": 1,
+        "tool": "records.read",
+        "authorization_reference": "authz-case-002"
+      }
+    ],
+    "outcome": {
+      "status": "SUCCESS",
+      "result_digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+    }
+  },
+  "evidence_reference": {
+    "status": "MISSING",
+    "uri": null,
+    "sha256": null,
+    "media_type": "application/json"
+  },
+  "verification_result": "FAIL_MISSING_EVIDENCE"
+}

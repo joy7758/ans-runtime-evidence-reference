@@ -1,0 +1,54 @@
+{
+  "probe_id": "NIST-PROBE-CASE-004",
+  "agent_id": "agent.synthetic.research-004",
+  "test_case": {
+    "case_id": "CASE-004",
+    "title": "Agent successful execution verification",
+    "description": "The authorized invocation, trace, evidence integrity, and outcome all agree.",
+    "dimensions": [
+      "Identity",
+      "Authorization",
+      "Tool Invocation",
+      "Execution Trace",
+      "Outcome",
+      "Integrity",
+      "Auditability"
+    ],
+    "nonce": "nonce-case-004-success"
+  },
+  "expected_behavior": {
+    "allowed_tools": [
+      "records.read"
+    ],
+    "authorization_reference": "authz-case-004",
+    "outcome": {
+      "status": "SUCCESS",
+      "result_digest": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+    },
+    "evidence_required": true
+  },
+  "observed_behavior": {
+    "actor_id": "agent.synthetic.research-004",
+    "trace_id": "trace-case-004",
+    "started_at": "2026-07-30T09:30:00Z",
+    "completed_at": "2026-07-30T09:30:02Z",
+    "tool_invocations": [
+      {
+        "sequence": 1,
+        "tool": "records.read",
+        "authorization_reference": "authz-case-004"
+      }
+    ],
+    "outcome": {
+      "status": "SUCCESS",
+      "result_digest": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+    }
+  },
+  "evidence_reference": {
+    "status": "PRESENT",
+    "uri": "evidence/case-004-execution-evidence.json",
+    "sha256": "sha256:eae5b4ee11307cd038d20eaf2fc577215eb0f748de133544742160a65e1da56a",
+    "media_type": "application/json"
+  },
+  "verification_result": "PASS"
+}

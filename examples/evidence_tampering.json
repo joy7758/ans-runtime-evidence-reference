@@ -1,0 +1,53 @@
+{
+  "probe_id": "NIST-PROBE-CASE-003",
+  "agent_id": "agent.synthetic.research-003",
+  "test_case": {
+    "case_id": "CASE-003",
+    "title": "Agent evidence tampering",
+    "description": "The referenced evidence bytes differ from the trusted original evidence digest.",
+    "dimensions": [
+      "Identity",
+      "Tool Invocation",
+      "Execution Trace",
+      "Outcome",
+      "Integrity",
+      "Auditability"
+    ],
+    "nonce": "nonce-case-003-integrity"
+  },
+  "expected_behavior": {
+    "allowed_tools": [
+      "records.read"
+    ],
+    "authorization_reference": "authz-case-003",
+    "outcome": {
+      "status": "SUCCESS",
+      "result_digest": "sha256:3333333333333333333333333333333333333333333333333333333333333333"
+    },
+    "evidence_required": true
+  },
+  "observed_behavior": {
+    "actor_id": "agent.synthetic.research-003",
+    "trace_id": "trace-case-003",
+    "started_at": "2026-07-30T09:20:00Z",
+    "completed_at": "2026-07-30T09:20:02Z",
+    "tool_invocations": [
+      {
+        "sequence": 1,
+        "tool": "records.read",
+        "authorization_reference": "authz-case-003"
+      }
+    ],
+    "outcome": {
+      "status": "SUCCESS",
+      "result_digest": "sha256:3333333333333333333333333333333333333333333333333333333333333333"
+    }
+  },
+  "evidence_reference": {
+    "status": "PRESENT",
+    "uri": "evidence/case-003-tampered-execution-evidence.json",
+    "sha256": "sha256:9151270f07969710fe56a40fe38668790307813bf999ac236c9ee782342cdc3f",
+    "media_type": "application/json"
+  },
+  "verification_result": "FAIL_EVIDENCE_TAMPERING"
+}
