@@ -1,0 +1,21 @@
+{
+  "evidence_version": "0.1.0",
+  "probe_id": "NIST-PROBE-CASE-003",
+  "test_case_id": "CASE-003",
+  "nonce": "nonce-case-003-integrity",
+  "agent_id": "agent.synthetic.research-003",
+  "trace_id": "trace-case-003",
+  "authorization_reference": "authz-case-003",
+  "tool_invocations": [
+    {
+      "sequence": 1,
+      "tool": "records.read",
+      "authorization_reference": "authz-case-003"
+    }
+  ],
+  "outcome": {
+    "status": "SUCCESS",
+    "result_digest": "sha256:3333333333333333333333333333333333333333333333333333333333333333"
+  },
+  "recorded_at": "2026-07-30T09:20:03Z"
+}
